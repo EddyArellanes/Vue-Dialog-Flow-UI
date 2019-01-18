@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		/*
+		Config Things We'll need
+		Modal-Header:
+			BackgroundColor
+			Text
+
+		*/
+	</script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+            
+	<title></title>
+</head>
+<body>
+	 <!-- Modal Trigger -->  
+  <a  onclick="openChat()" class="conversation-floating-button btn-floating btn-large waves-effect waves-light blue darken-2"><i class="material-icons">chat</i></a>
+ 
+ <div class="row conversation-container">
+    <div class="col s12 m6 l4 right margin-right-1">
+      <!--Begin Layout of Card-->
+      <div class="card">
+        <div class="card-header blue darken-2 conversation-header">
+          <p>Widget Chat UI</p>
+          <i onclick="closeChat()" class="material-icons right white-text conversation-header-close">close</i>
+        </div>
+        <div class="card-content conversation-body">
+          <div class="row">
+            <div class="conversation-bubble conversation-bubble-user">
+              <p class="tooltipped" data-position="bottom" data-tooltip="11:57 AM">Hola Cómo estás</p>
+            </div>
+          </div>
+          <div class="row">       
+            <img src="panda-fat.png" class="circle conversation-avatar-size">
+            <div class="conversation-bubble conversation-bubble-bot">       
+              <p class="tooltipped" data-position="bottom" data-tooltip="12:00 PM">Bien ¿Y tú?</p>
+            </div>              
+          </div>
+
+        </div>
+        <div class="card-action conversation-footer">
+          <button class="btn-floating blue darken-3 waves-effect left dropdown-trigger" data-target='dropdownOptions'><i class="material-icons">add</i></button>
+          <ul id='dropdownOptions' class='dropdown-content'>
+          <li><a href="#!" class="blue-text darken-1 drop-button"><i class="material-icons center blue-text darken-4">photo</i>Imagen</a></li>
+          <li><a href="#!" class="blue-text darken-1 drop-button"><i class="material-icons center blue-text darken-4">description</i>Documento</a></li>
+          <li class="divider" tabindex="-1"></li>           
+          <li><a href="#!" class="blue-text darken-1 drop-button"><i class="material-icons blue-text darken-4">location_on</i>Ubicación</a></li>
+        </ul>
+        <div class="input-field col s7 m7 l7 conversation-functions-input-text">
+            <input placeholder="Escribe un mensaje..." id="message" type="text" class="validate input-field">          
+        </div>      
+        <a class="modal-close waves-effect waves-green btn-flat green-text text-darken-2 pointer">Enviar</a>  
+        </div>
+      </div>
+    </div>
+ </div>
+
+  <!--Modal Chat-->
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">  		
+  		
+  	<div class="modal-header blue darken-2 white-text">
+  		<p>Modal Widget Chat UI :)</p>
+  		<i class="modal-close material-icons right white-text modal-header-close">close</i>
+  	</div>
+  	
+    <div class="modal-content">      	      		    	
+    	<div class="row">
+  			<div class="conversation-bubble conversation-bubble-user">
+    			<p class="tooltipped" data-position="bottom" data-tooltip="11:57 AM">Hola Cómo estás</p>
+    		</div>
+  		</div>
+    	<div class="row">    		
+    		<img src="panda-fat.png" class="circle conversation-avatar-size">
+    		<div class="conversation-bubble conversation-bubble-bot">    		
+    			<p class="tooltipped" data-position="bottom" data-tooltip="12:00 PM">Bien ¿Y tú?</p>
+    		</div>     	
+    		
+    	</div>
+    	
+    </div>
+    <div class="modal-footer">
+    	<div class="row no-margin-bottom">
+	    	<button class="btn-floating blue darken-3 waves-effect left dropdown-trigger" data-target='dropdown1'><i class="material-icons">add</i></button>	
+	    	<ul id='dropdown1' class='dropdown-content'>
+			    <li><a href="#!" class="black-text"><i class="material-icons center black-text">photo</i>Imagen</a></li>
+			    <li><a href="#!" class="black-text"><i class="material-icons center black-text">description</i>Documento</a></li>
+			    <li class="divider" tabindex="-1"></li>			      
+			    <li><a href="#!" class="black-text"><i class="material-icons black-text">location_on</i>Ubicación</a></li>
+			  </ul>
+	    	<div class="input-field col s10 m10 l10 conversation-functions-input-text">
+	          <input placeholder="Escribe un mensaje..." id="message" type="text" class="validate input-field">          
+	      </div>    	
+	      <a href="#!" class="modal-close waves-effect waves-green btn-flat green-text text-darken-2">Enviar</a>
+    	</div>
+    	
+    	
+    </div>
+  </div>
+  <style type="text/css">
+    .conversation-container {
+      -webkit-animation: shadow-drop-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+      animation: shadow-drop-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+    /*
+    @-webkit-keyframes shadow-drop-center {
+        0% {
+        opacity: 0;
+    }
+    50%{
+      opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+    }
+    @keyframes shadow-drop-center {
+        0% {
+        opacity: 0;
+    }
+    50%{
+      opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+    }
+  */
+    body{
+      margin: 0;
+      padding: 0;
+    }
+    .pointer{
+      cursor: pointer;
+    }
+    .conversation-floating-button {
+      position: fixed;
+      top: 88%;
+      left: 94%;
+    }
+  	.conversation-container{
+      margin-top: 2%;
+    }
+    .conversation-header{
+      height: 60px;
+    }
+    .conversation-header-close{
+      padding-top: 16px;
+      padding-right: 16px;
+    }
+    .conversation-header-close:hover{
+      cursor: pointer;
+    }	 
+    .conversation-header > p{
+      color: white;
+      display: inline-block;      
+      margin-left: 24px;
+    }
+    .conversation-body{
+      height: 400px;
+    }
+    .conversation-bubble{  
+      display: block;   
+      border-radius: 16px;
+      color: black;
+      padding: 8px;
+    }
+    .conversation-bubble{
+      display: block;
+    }
+    .conversation-bubble-user{
+      background-color: #1976D2;
+      color: white;
+      float: right;
+    }
+    .conversation-avatar-size{
+      width: 60px;
+      margin-right: 4px;
+      float: left;
+    }   
+    .conversation-bubble-bot{
+      background-color: #f4f4f4;
+      float: left;
+    }
+    .conversation-footer{
+      height: 100px;
+    }
+    .drop-button{
+      text-transform: initial!important;
+
+    }
+    /*------------------Modal Styles---------------------*/  	
+
+  	.conversation-functions-input-text{
+  		margin-top: -1%;
+  		height: 2.3rem;
+  	}
+  	.modal{
+  		border-radius: 5px;
+  	}
+  	.modal-header{
+  		height: 50px;
+  	}
+  	.modal-header>p{
+  		display: inline-block;  		
+  		margin-left: 16px;
+  	}
+  	.modal-header-close{
+  		padding-right: 10px;
+    	padding-top: 16px;
+  	}
+  	.modal-header-close:hover{
+  		cursor: pointer;
+  	}  	
+  	.no-margin-bottom{
+  		margin-bottom: 0;
+  	}
+    .margin-right-1{
+      margin-right: 1%;
+    }
+  </style>
+  <script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', function() {
+  	var elems = document.querySelectorAll('.dropdown-trigger');
+  	var instances = M.Dropdown.init(elems, {alignment: "left"});    
+  });
+
+	document.addEventListener('DOMContentLoaded', function() { 
+  	var elems = document.querySelectorAll('.modal');
+  	var instances = M.Modal.init(elems, {opacity: 0.6});
+
+	});  
+
+	document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.tooltipped');
+    var instances = M.Tooltip.init(elems, {});
+  });
+  function openChat(){
+    console.log("Hola")
+    let chat = document.querySelector(".conversation-container")
+    chat.style.display = "block"    
+  }
+  function closeChat(){    
+    let chat = document.querySelector(".conversation-container")
+    chat.style.display = "none"
+  }
+
+  </script>
+
+</body>
+</html>

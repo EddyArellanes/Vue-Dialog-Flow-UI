@@ -1,17 +1,37 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <FloatingButton v-on:click="openChat()" />
+    <ChatWindow/>   
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import FloatingButton from './components/FloatingButton.vue'
+import ChatWindow from './components/ChatWindow.vue'
+
+import config from './configuration'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    FloatingButton,
+    ChatWindow
+  },
+  data(){
+    return {      
+      config
+    }
+  },
+  mounted(){
+
+  },
+  methods:{
+    openChat(){     
+      
+      let chat = document.querySelector(".conversation-container")
+      chat.style.display = "block"    
+
+    }
   }
 }
 </script>
@@ -25,4 +45,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
 </style>

@@ -1,29 +1,12 @@
-# dialog-flow-ui
+# Vue DialogFlowUI
+`This UI was built to connect with Dialogflow, because of 15 channels it provided, there no exist for Web xD`
 
-## Project setup
-```
-npm install
-```
+## Installation
+> npm install
+> npm run serve
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Dependencies
+- MaterializeCss for keep it simple
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Configuration
+`In App.vue Just fill JSON configuration const and that's it is autodescriptive I hope xD - Eddy`
