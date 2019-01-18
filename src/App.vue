@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <FloatingButton v-on:click="openChat()" />
-    <ChatWindow/>   
+    <FloatingButton @openchat="config.chatWindow.visibleOnStart = true" />
+    <ChatWindow 
+    @closechat="config.chatWindow.visibleOnStart = false" 
+    :visible="config.chatWindow.visibleOnStart"/>   
   </div>
 </template>
 
@@ -9,7 +11,8 @@
 import FloatingButton from './components/FloatingButton.vue'
 import ChatWindow from './components/ChatWindow.vue'
 
-import config from './configuration'
+import { configuration} from './configuration'
+
 
 export default {
   name: 'app',
@@ -19,19 +22,13 @@ export default {
   },
   data(){
     return {      
-      config
+      config: configuration
     }
   },
-  mounted(){
-
+  mounted(){    
   },
   methods:{
-    openChat(){     
-      
-      let chat = document.querySelector(".conversation-container")
-      chat.style.display = "block"    
-
-    }
+    
   }
 }
 </script>

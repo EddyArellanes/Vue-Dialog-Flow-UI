@@ -1,5 +1,5 @@
 <template>
-  <a class="conversation-floating-button btn-floating btn-large waves-effect waves-light blue darken-2">
+  <a class="conversation-floating-button btn-floating btn-large waves-effect waves-light blue darken-2" v-on:click="openchat">
     <i class="material-icons">chat</i>
   </a> 
 </template>
@@ -10,6 +10,11 @@ export default {
     color: String,
     colorIcon: String,
     icon: String
+  },
+  methods:{
+    openchat(){
+      this.$emit('openchat', true)
+    }
   }
 }
 </script>

@@ -4,6 +4,9 @@ module.exports = {
       color: "blue darken-2",
       colorIcon: "white",
       icon: "chat"
+    },
+    chatWindow:{
+      visibleOnStart : false
     }
   }
 }
