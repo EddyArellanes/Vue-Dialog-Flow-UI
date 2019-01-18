@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <FloatingButton @openchat="config.chatWindow.visibleOnStart = true" />
+    <FloatingButton @openchat="config.ui.chatWindow.visibleOnStart = true" />
     <ChatWindow 
-    @closechat="config.chatWindow.visibleOnStart = false" 
-    :visible="config.chatWindow.visibleOnStart"/>   
+    @closechat="config.ui.chatWindow.visibleOnStart = false" 
+    :visible="config.ui.chatWindow.visibleOnStart"/>   
   </div>
 </template>
 

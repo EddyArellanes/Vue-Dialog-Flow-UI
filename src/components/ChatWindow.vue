@@ -40,7 +40,9 @@
 </template>
 <script>
 import Message from './Message.vue'
-
+import axios from 'axios'
+import { KJUR } from 'jsrsasign'
+import configuration from '../configuration'
 export default {
   name: 'ChatWindow',
   components:{
@@ -55,11 +57,17 @@ export default {
   },
   data(){
     return {      
-      isVisible: Boolean
+      isVisible: Boolean,
+      token: undefined,
+      tokenInterval: undefined
     }
   },
   mounted(){
     this.visibility(this.visible)
+  },
+  created(){
+    this.tokenInterval = setInterval(this.generateToken, 3600000)
+    this.generateToken()
   },
   methods: {
     visibility(value){
@@ -68,12 +76,33 @@ export default {
     closechat(){      
       this.visibility( false)
       this.$emit('closechat', false)
+    },
+    generateToken(){
+      // Header
+      const header = {
+        alg: 'RS256',
+        typ: 'JWT',
+        kid: configuration.private_key_id
+      }
+
+      // Payload
+      const payload = {
+        iss: creds.client_email,
+        sub: creds.client_email,
+        iat: KJUR.jws.IntDate.get('now'),
+        exp: KJUR.jws.IntDate.get('now + 1hour'),
+        aud: 'https://dialogflow.googleapis.com/google.cloud.dialogflow.v2.Sessions'
+      }
+      
+      const stringHeader = JSON.stringify(header)
+      const stringPayload = JSON.stringify(payload)
+      this.token = KJUR.jws.JWS.sign('RS256', stringHeader, stringPayload, creds.private_key)
     }
   }
 }
 </script>
 <style scoped>  
-
+  /*In fact not working transitions :'c */
   .conversation-container {    
     transition-property: visibility, opacity;
     transition-duration: 1s, 1s;
